@@ -24,7 +24,7 @@ defmodule Ory.Model.Session do
     :active => boolean() | nil,
     :authenticated_at => DateTime.t | nil,
     :authentication_methods => [Ory.Model.SessionAuthenticationMethod.t] | nil,
-    :authenticator_assurance_level => Ory.Model.AuthenticatorAssuranceLevel.t | nil,
+    :authenticator_assurance_level => String.t | nil,
     :devices => [Ory.Model.SessionDevice.t] | nil,
     :expires_at => DateTime.t | nil,
     :id => String.t,
@@ -39,7 +39,6 @@ defmodule Ory.Model.Session do
     value
      |> Deserializer.deserialize(:authenticated_at, :datetime, nil)
      |> Deserializer.deserialize(:authentication_methods, :list, Ory.Model.SessionAuthenticationMethod)
-     |> Deserializer.deserialize(:authenticator_assurance_level, :struct, Ory.Model.AuthenticatorAssuranceLevel)
      |> Deserializer.deserialize(:devices, :list, Ory.Model.SessionDevice)
      |> Deserializer.deserialize(:expires_at, :datetime, nil)
      |> Deserializer.deserialize(:identity, :struct, Ory.Model.Identity)

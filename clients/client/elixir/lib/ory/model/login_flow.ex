@@ -38,7 +38,7 @@ defmodule Ory.Model.LoginFlow do
     :organization_id => String.t | nil,
     :refresh => boolean() | nil,
     :request_url => String.t,
-    :requested_aal => Ory.Model.AuthenticatorAssuranceLevel.t | nil,
+    :requested_aal => String.t | nil,
     :return_to => String.t | nil,
     :session_token_exchange_code => String.t | nil,
     :state => any() | nil,
@@ -56,7 +56,6 @@ defmodule Ory.Model.LoginFlow do
      |> Deserializer.deserialize(:expires_at, :datetime, nil)
      |> Deserializer.deserialize(:issued_at, :datetime, nil)
      |> Deserializer.deserialize(:oauth2_login_request, :struct, Ory.Model.OAuth2LoginRequest)
-     |> Deserializer.deserialize(:requested_aal, :struct, Ory.Model.AuthenticatorAssuranceLevel)
      |> Deserializer.deserialize(:ui, :struct, Ory.Model.UiContainer)
      |> Deserializer.deserialize(:updated_at, :datetime, nil)
   end

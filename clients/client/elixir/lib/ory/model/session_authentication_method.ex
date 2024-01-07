@@ -16,7 +16,7 @@ defmodule Ory.Model.SessionAuthenticationMethod do
   ]
 
   @type t :: %__MODULE__{
-    :aal => Ory.Model.AuthenticatorAssuranceLevel.t | nil,
+    :aal => String.t | nil,
     :completed_at => DateTime.t | nil,
     :method => String.t | nil,
     :organization => String.t | nil,
@@ -27,7 +27,6 @@ defmodule Ory.Model.SessionAuthenticationMethod do
 
   def decode(value) do
     value
-     |> Deserializer.deserialize(:aal, :struct, Ory.Model.AuthenticatorAssuranceLevel)
      |> Deserializer.deserialize(:completed_at, :datetime, nil)
   end
 end
